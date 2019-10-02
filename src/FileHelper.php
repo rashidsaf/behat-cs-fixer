@@ -3,12 +3,11 @@
 namespace BehatCsFixer;
 
 use BehatCsFixer\Exceptions\FileNotFound;
+use BehatCsFixer\Exceptions\FileWriteException;
 use Generator;
 
 /**
- * File helper class.
- *
- * Class FileReader
+ * Helper for reading and writing files.
  */
 class FileHelper
 {
@@ -17,7 +16,7 @@ class FileHelper
      *
      * @param  string       $file Path to the file.
      * @throws FileNotFound When File not found.
-     * @return Generator
+     * @return Generator|string[]
      */
     public static function readFile(string $file): Generator
     {
@@ -31,13 +30,19 @@ class FileHelper
     }
 
     /**
-     * Saves file.
+     * Saves the file.
      *
-     * @param string $file    Path to the file.
-     * @param string $content Contents to be saved.
+     * @param  string $file       Path to the file.
+     * @param  string $content    Contents to be saved.
+     * @throws FileWriteException When there is a problem with saving the file.
      */
     public static function save(string $file, string $content): void
     {
-        file_put_contents($file, $content);
+        if(!file_put_contents($file, $content)){
+            throw new FileWriteException((
+                $err = error_get_last())
+                ? $err['message']
+                : 'There was a problem with saving file: '.$file);
+        }
     }
 }

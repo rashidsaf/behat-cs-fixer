@@ -5,7 +5,7 @@ namespace BehatCsFixer\Fixers;
 /**
  * Fixer class for Background keyword.
  */
-class BackgroundStepFixer extends AbstractStepFixer
+class BackgroundStepFixer extends StepFixer
 {
     protected $padding = 2;
     protected $keyword = 'Background';

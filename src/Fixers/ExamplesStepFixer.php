@@ -5,7 +5,7 @@ namespace BehatCsFixer\Fixers;
 /**
  * Fixer class for Examples keyword.
  */
-class ExamplesStepFixer extends AbstractStepFixer
+class ExamplesStepFixer extends StepFixer
 {
     protected $padding = 4;
     protected $keyword = 'Examples';

@@ -8,7 +8,7 @@ namespace BehatCsFixer\Fixers;
  * @property int $padding       Left padding.
  * @property int $keyword       Keyword of the step.
  */
-abstract class AbstractStepFixer
+abstract class StepFixer
 {
     /** @var string Step body. */
     protected $step_body;

@@ -5,7 +5,7 @@ namespace BehatCsFixer\Fixers;
 /**
  * Fixer class for And keyword.
  */
-class AndStepFixer extends StepFixer
+class ButStepFixer extends StepFixer
 {
     protected $padding = 6;
     protected $keyword = 'And';

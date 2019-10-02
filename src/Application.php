@@ -2,34 +2,51 @@
 
 namespace BehatCsFixer;
 
+use BehatCsFixer\Exceptions\FileWriteException;
 use BehatCsFixer\Fixers\FixerFactory;
 use BehatCsFixer\Fixers\TableFixer;
 use BehatCsFixer\Parsers\StepParser;
 use BehatCsFixer\Parsers\TableParser;
+use BehatCsFixer\Exceptions\InvalidKeywordException;
+use BehatCsFixer\Exceptions\FileNotFound;
+use Generator;
 
 /**
  * The main operation class.
  */
 class Application
 {
-    /** @var array List of the files. */
+    /** @var string[] List of the files. */
     private $files = [];
+
+    /** @var StepParser Instance of StepParser */
+    private $stepParser;
+
+    /** @var TableParser Instance of TableParser */
+    private $tableParser;
+
+    /** @var TableFixer Instance of TableFixer */
+    private $tableFixer;
 
     /**
      * Application constructor.
      *
-     * @param array $files
+     * @param string[] $files
      */
     public function __construct(array $files)
     {
         $this->files = $files;
+        $this->stepParser = new StepParser();
+        $this->tableParser = new TableParser();
+        $this->tableFixer = new TableFixer();
     }
 
     /**
      * Run the fix function for all given files.
      *
-     * @throws Exceptions\InvalidKeywordException
-     * @throws Exceptions\FileNotFound
+     * @throws InvalidKeywordException From StepParser
+     * @throws FileNotFound            From FileHelper
+     * @throws FileWriteException      From FileHelper
      */
     public function run(): void
     {
@@ -39,30 +56,40 @@ class Application
     }
 
     /**
-     * Fe-format file.
+     * Fixes the formatting of the file.
      *
-     * @param  string                             $file_path Path to the test file.
-     * @throws Exceptions\InvalidKeywordException From StepParser
-     * @throws Exceptions\FileNotFound            From File
+     * @param  string $file_path Path to the test file.
+     * @throws InvalidKeywordException From StepParser
+     * @throws FileNotFound            From FileHelper
+     * @throws FileWriteException      From FileHelper
      */
     private function fix(string $file_path): void
     {
         $content = '';
         $fileReader = FileHelper::readFile($file_path);
-        $stepParser = new StepParser();
-        $tableParser = new TableParser();
         while ($fileReader->current()) {
-            $stepDto = $stepParser->run($fileReader->current());
-            if ($stepDto->getKeyword() == 'Table') {
-                $content .= (new TableFixer($tableParser->run($fileReader)))->run();
-
-                continue;
-            }
-
-            $content .= FixerFactory::getStepFixer($stepDto)->run();
-            $fileReader->next();
+            $content .= $this->fixStep($fileReader);
         }
 
         FileHelper::save($file_path, $content);
+    }
+
+    /**
+     * Parses the line or table, fix the formatting and return.
+     *
+     * @param Generator $fileReader File streamer
+     * @return string
+     * @throws InvalidKeywordException From StepParser
+     */
+    private function fixStep(Generator $fileReader): string
+    {
+        $stepDto = $this->stepParser->run($fileReader->current());
+        if ($stepDto->getKeyword() == 'Table') {
+            return $this->tableFixer->run($this->tableParser->run($fileReader));
+        }
+
+        $fileReader->next();
+
+        return FixerFactory::getStepFixer($stepDto)->run();
     }
 }

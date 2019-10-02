@@ -8,7 +8,7 @@ namespace BehatCsFixer\Dto;
 class TableDto
 {
     /** @var array Multilevel associative array of table cells. */
-    private $cells;
+    private $rows;
     /** @var array Width of every column in the table. */
     private $column_lengths;
 
@@ -20,7 +20,7 @@ class TableDto
      */
     public function __construct(array $cells, array $column_lengths)
     {
-        $this->cells = $cells;
+        $this->rows = $cells;
         $this->column_lengths = $column_lengths;
     }
 
@@ -31,7 +31,7 @@ class TableDto
      */
     public function getTable(): array
     {
-        return $this->cells;
+        return $this->rows;
     }
 
     /**

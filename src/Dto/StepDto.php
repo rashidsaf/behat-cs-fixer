@@ -19,6 +19,7 @@ class StepDto
         'When'       => true,
         'Then'       => true,
         'And'        => true,
+        'But'        => true,
     ];
 
     /** @var string Step line without keyword prefix. */

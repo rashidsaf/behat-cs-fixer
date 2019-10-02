@@ -5,7 +5,7 @@ namespace BehatCsFixer\Fixers;
 /**
  * Fixer class for Then keyword.
  */
-class ThenStepFixer extends AbstractStepFixer
+class ThenStepFixer extends StepFixer
 {
     protected $padding = 5;
     protected $keyword = 'Then';

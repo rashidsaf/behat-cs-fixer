@@ -5,7 +5,7 @@ namespace BehatCsFixer\Fixers;
 /**
  * Fixer class for Scenario keyword.
  */
-class ScenarioStepFixer extends AbstractStepFixer
+class ScenarioStepFixer extends StepFixer
 {
     protected $padding = 2;
     protected $keyword = 'Scenario';

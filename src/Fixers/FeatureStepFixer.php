@@ -5,7 +5,7 @@ namespace BehatCsFixer\Fixers;
 /**
  * Fixer class for Feature keyword.
  */
-class FeatureStepFixer extends AbstractStepFixer
+class FeatureStepFixer extends StepFixer
 {
     protected $padding = 0;
     protected $keyword = 'Feature';

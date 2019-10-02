@@ -7,8 +7,6 @@ use Generator;
 
 /**
  * Parse consecutive lines as table and fix the formatting.
- *
- * Class TableParser
  */
 class TableParser
 {
@@ -21,22 +19,16 @@ class TableParser
     public function run(Generator $fileReader): TableDTO
     {
         $table_cells = [];
-        $max_lengths = [];
         while ($table_row = $fileReader->current()) {
-            // Table ends
             if (empty($row_cells = $this->parseRow($table_row))) {
+                // Table ends
                 break;
             }
-            // Find largest value for each column
-            foreach ($row_cells as $i=>$cell) {
-                $max_lengths[$i] = isset($max_lengths[$i]) ? max(strlen($cell), $max_lengths[$i]) : strlen($cell);
-            }
-
             $table_cells[] = $row_cells;
             $fileReader->next();
         }
 
-        return new TableDto($table_cells, $max_lengths);
+        return new TableDto($table_cells, $this->computeColumnWidths($table_cells));
     }
 
     /**
@@ -56,5 +48,26 @@ class TableParser
         array_shift($cells);
 
         return $cells;
+    }
+
+    /**
+     * Find the longest value in the column, and keep the record.
+     *
+     * @param  array[] $table_cells 2D Array of table cells
+     * @return int[]   List of the width of the columns
+     */
+    private function computeColumnWidths(array $table_cells): array
+    {
+        $columns_width = [];
+        foreach ($table_cells as $row => $row_cells) {
+            foreach ($row_cells as $col => $cell) {
+                $columns_width[$col] =
+                    isset($columns_width[$col])
+                    ? max(strlen($cell), $columns_width[$col])
+                    : strlen($cell);
+            }
+        }
+
+        return $columns_width;
     }
 }

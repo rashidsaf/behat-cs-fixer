@@ -5,7 +5,7 @@ namespace BehatCsFixer\Fixers;
 /**
  * Fixer class for unmatched keywords.
  */
-class NoneStepFixer extends AbstractStepFixer
+class NoneStepFixer extends StepFixer
 {
     protected $padding = 0;
     protected $keyword = '';

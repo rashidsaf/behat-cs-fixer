@@ -15,9 +15,9 @@ class FixerFactory
      * Gets related Fixer class.
      *
      * @param  StepDto           $stepDTO
-     * @return AbstractStepFixer
+     * @return StepFixer
      */
-    public static function getStepFixer(StepDto $stepDTO): AbstractStepFixer
+    public static function getStepFixer(StepDto $stepDTO): StepFixer
     {
         $fixerClass = '\BehatCsFixer\Fixers\\'.$stepDTO->getKeyword().'StepFixer';
 

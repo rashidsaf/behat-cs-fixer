@@ -5,9 +5,7 @@ namespace BehatCsFixer\Fixers;
 use BehatCsFixer\Dto\TableDto;
 
 /**
- * Fix the table formatting.
- *
- * Class TableParser
+ * Fixes the table formatting.
  */
 class TableFixer
 {
@@ -17,22 +15,14 @@ class TableFixer
     private const PADDING = 8;
 
     /**
-     * Assign tableDto to local property.
-     *
-     * @param TableDto $dto Table content dto.
-     */
-    public function __construct(TableDto $dto)
-    {
-        $this->dto = $dto;
-    }
-
-    /**
      * Reformat the table.
      *
+     * @param  TableDto $dto Table content dto.
      * @return string
      */
-    public function run(): string
+    public function run(TableDto $dto): string
     {
+        $this->dto = $dto;
         $table_content = '';
         foreach ($this->dto->getTable() as $row) {
             $table_content .= $this->formatRow($row);
@@ -49,11 +39,9 @@ class TableFixer
      */
     private function setCellPadding(array $row): array
     {
-        array_walk($row, function (&$cell, $column) {
-            $cell = str_pad($cell, $this->dto->getColumnLength($column), ' ', STR_PAD_RIGHT);
-        });
-
-        return $row;
+        return array_map(function ($column, $cell) {
+            return str_pad($cell, $this->dto->getColumnLength($column), ' ', STR_PAD_RIGHT);
+        }, array_keys($row), $row);
     }
 
     /**

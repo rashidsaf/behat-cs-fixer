@@ -1,24 +1,16 @@
 {
-  "name": "rashid/behat-cs-fixer",
-  "description": "Behat style fixer",
-  "license": "GNU",
-  "authors": [
-    {
-      "name": "Rashid Safarov",
-      "email": "rashid@healthlabs.com"
-    }
-  ],
+  "name": "medology/behat-cs-fixer",
+  "description": "Behat code formatter",
+  "license": "MIT",
   "autoload": {
-    "psr-4": {
-      "BehatCsFixer\\": "src/"
-    }
-  },
-  "autoload-dev": {
     "psr-4": {
       "BehatCsFixer\\": "src/"
     }
   },
   "bin": [
     "bin/behat-fixer"
-  ]
+  ],
+  "require": {
+    "php": ">=7.1.0"
+  }
 }
