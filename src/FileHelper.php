@@ -14,8 +14,8 @@ class FileHelper
     /**
      * File reading generator.
      *
-     * @param  string       $file Path to the file.
-     * @throws FileNotFound When File not found.
+     * @param  string             $file Path to the file.
+     * @throws FileNotFound       When File not found.
      * @return Generator|string[]
      */
     public static function readFile(string $file): Generator
@@ -32,13 +32,13 @@ class FileHelper
     /**
      * Saves the file.
      *
-     * @param  string $file       Path to the file.
-     * @param  string $content    Contents to be saved.
+     * @param  string             $file    Path to the file.
+     * @param  string             $content Contents to be saved.
      * @throws FileWriteException When there is a problem with saving the file.
      */
     public static function save(string $file, string $content): void
     {
-        if(!file_put_contents($file, $content)){
+        if (!file_put_contents($file, $content)) {
             throw new FileWriteException((
                 $err = error_get_last())
                 ? $err['message']

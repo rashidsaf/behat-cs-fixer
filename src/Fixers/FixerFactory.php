@@ -14,7 +14,7 @@ class FixerFactory
     /**
      * Gets related Fixer class.
      *
-     * @param  StepDto           $stepDTO
+     * @param  StepDto   $stepDTO
      * @return StepFixer
      */
     public static function getStepFixer(StepDto $stepDTO): StepFixer

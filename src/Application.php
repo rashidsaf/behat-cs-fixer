@@ -2,13 +2,13 @@
 
 namespace BehatCsFixer;
 
+use BehatCsFixer\Exceptions\FileNotFound;
 use BehatCsFixer\Exceptions\FileWriteException;
+use BehatCsFixer\Exceptions\InvalidKeywordException;
 use BehatCsFixer\Fixers\FixerFactory;
 use BehatCsFixer\Fixers\TableFixer;
 use BehatCsFixer\Parsers\StepParser;
 use BehatCsFixer\Parsers\TableParser;
-use BehatCsFixer\Exceptions\InvalidKeywordException;
-use BehatCsFixer\Exceptions\FileNotFound;
 use Generator;
 
 /**
@@ -58,7 +58,7 @@ class Application
     /**
      * Fixes the formatting of the file.
      *
-     * @param  string $file_path Path to the test file.
+     * @param  string                  $file_path Path to the test file.
      * @throws InvalidKeywordException From StepParser
      * @throws FileNotFound            From FileHelper
      * @throws FileWriteException      From FileHelper
@@ -77,9 +77,9 @@ class Application
     /**
      * Parses the line or table, fix the formatting and return.
      *
-     * @param Generator $fileReader File streamer
-     * @return string
+     * @param  Generator               $fileReader File streamer
      * @throws InvalidKeywordException From StepParser
+     * @return string
      */
     private function fixStep(Generator $fileReader): string
     {

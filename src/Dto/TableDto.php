@@ -10,18 +10,18 @@ class TableDto
     /** @var array Multilevel associative array of table cells. */
     private $rows;
     /** @var array Width of every column in the table. */
-    private $column_lengths;
+    private $columns_width;
 
     /**
      * Fill the properties from array.
      *
-     * @param array[] $cells          Associative array of table cell values
-     * @param int[]   $column_lengths List of columns sizes
+     * @param array[] $cells   Associative array of table cell values
+     * @param int[]   $widths  List of columns widths
      */
-    public function __construct(array $cells, array $column_lengths)
+    public function __construct(array $cells, array $widths)
     {
         $this->rows = $cells;
-        $this->column_lengths = $column_lengths;
+        $this->columns_width = $widths;
     }
 
     /**
@@ -42,6 +42,6 @@ class TableDto
      */
     public function getColumnLength(int $column): int
     {
-        return $this->column_lengths[$column];
+        return $this->columns_width[$column];
     }
 }
