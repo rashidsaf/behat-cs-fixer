@@ -8,6 +8,11 @@
 - All extra spaces inside table cells are deleted
 - Table column width is determined by the longest cell in that column.
 
+Initially
+![not-fixed](https://user-images.githubusercontent.com/52429111/66161616-53a9e400-e5f2-11e9-8ede-b956dc075a4a.png)
+After fixed
+![fixed](https://user-images.githubusercontent.com/52429111/66161615-53a9e400-e5f2-11e9-91d6-d1480e3b7fb0.png)
+
 ### Known issues:
 - Extra newlines are not deleted.
 - Doesn't check newline end the end of the file.

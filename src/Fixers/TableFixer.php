@@ -11,6 +11,7 @@ class TableFixer
 {
     /** @var TableDto File reader generator */
     private $dto;
+
     /** @var int Padding value from left */
     private const PADDING = 8;
 

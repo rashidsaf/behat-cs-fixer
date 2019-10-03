@@ -9,6 +9,7 @@ class TableDto
 {
     /** @var array Multilevel associative array of table cells. */
     private $rows;
+
     /** @var array Width of every column in the table. */
     private $columns_width;
 
