@@ -8,5 +8,5 @@ namespace BehatCsFixer\Fixers;
 class ButStepFixer extends StepFixer
 {
     protected $padding = 6;
-    protected $keyword = 'And';
+    protected $keyword = 'But';
 }

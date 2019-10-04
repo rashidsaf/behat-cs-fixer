@@ -9,9 +9,10 @@
 - Table column width is determined by the longest cell in that column.
 
 Initially
-! Image coming
+![Screenshot from 2019-10-04 14-51-36](https://user-images.githubusercontent.com/52429111/66236609-87e7d800-e6b8-11e9-91fb-5dcd11bedb1f.png)
+
 After fixed
-! Image coming
+![Screenshot from 2019-10-04 15-07-23](https://user-images.githubusercontent.com/52429111/66236682-c41b3880-e6b8-11e9-90c9-fd66333f7158.png)
 
 ### Known issues:
 - Extra newlines are not deleted.
