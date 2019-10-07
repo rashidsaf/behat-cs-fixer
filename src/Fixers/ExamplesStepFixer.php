@@ -11,7 +11,7 @@ class ExamplesStepFixer extends StepFixer
     protected $keyword = 'Examples';
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function run(): string
     {

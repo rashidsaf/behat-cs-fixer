@@ -11,7 +11,7 @@ class ScenarioStepFixer extends StepFixer
     protected $keyword = 'Scenario';
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function run(): string
     {

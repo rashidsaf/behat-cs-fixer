@@ -38,7 +38,7 @@ class FileHelper
      */
     public static function save(string $file, string $content): void
     {
-        if (!@file_put_contents($file, $content)) {
+        if (!file_put_contents($file, $content)) {
             throw new FileWriteException('There was a problem with saving file: '.$file);
         }
     }

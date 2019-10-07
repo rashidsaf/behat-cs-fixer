@@ -11,7 +11,7 @@ class BackgroundStepFixer extends StepFixer
     protected $keyword = 'Background';
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function run(): string
     {

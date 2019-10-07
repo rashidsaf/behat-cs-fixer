@@ -20,7 +20,7 @@ class StepDto
         'Then',
         'And',
         'But',
-        '#'
+        '#',
     ];
 
     /** @var string Step line without keyword prefix. */
