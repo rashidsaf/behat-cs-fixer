@@ -15,6 +15,6 @@ class NoneStepFixer extends StepFixer
      */
     public function run(): string
     {
-        return $this->step_body;
+        return preg_match('/^([\s\n\r]+)$/m', $this->step_body) ? '' : $this->step_body;
     }
 }

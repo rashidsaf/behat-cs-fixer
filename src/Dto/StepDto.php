@@ -11,15 +11,16 @@ class StepDto
 {
     /** @var array List of available step keywords. */
     public const STEP_KEYWORDS = [
-        'Feature'    => true,
-        'Background' => true,
-        'Scenario'   => true,
-        'Examples'   => true,
-        'Given'      => true,
-        'When'       => true,
-        'Then'       => true,
-        'And'        => true,
-        'But'        => true,
+        'Feature',
+        'Background',
+        'Scenario',
+        'Examples',
+        'Given',
+        'When',
+        'Then',
+        'And',
+        'But',
+        '#'
     ];
 
     /** @var string Step line without keyword prefix. */
@@ -40,10 +41,10 @@ class StepDto
             $this->body = $content['body'] ?? '';
         } elseif ($content['keyword'] == '|') {
             $this->keyword = 'Table';
-        } elseif (empty(self::STEP_KEYWORDS[$content['keyword']])) {
+        } elseif (!in_array($content['keyword'], self::STEP_KEYWORDS)) {
             throw new InvalidKeywordException('Mismatched parsed keyword: '.$content['keyword']);
         } else {
-            $this->keyword = $content['keyword'];
+            $this->keyword = $content['keyword'] == '#' ? 'Pound' : $content['keyword'];
             $this->body = $content['body'];
         }
     }

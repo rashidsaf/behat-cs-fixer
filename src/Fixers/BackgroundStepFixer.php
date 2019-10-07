@@ -9,4 +9,12 @@ class BackgroundStepFixer extends StepFixer
 {
     protected $padding = 2;
     protected $keyword = 'Background';
+
+    /**
+     * {@inheritDoc}
+     */
+    public function run(): string
+    {
+        return PHP_EOL.parent::run();
+    }
 }
