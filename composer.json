@@ -1,0 +1,16 @@
+{
+  "name": "medology/behat-cs-fixer",
+  "description": "Behat code formatter",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "BehatCsFixer\\": "src/"
+    }
+  },
+  "bin": [
+    "bin/behat-fixer"
+  ],
+  "require": {
+    "php": ">=7.1.0"
+  }
+}
