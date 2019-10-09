@@ -2,9 +2,9 @@
 
 namespace GherkinCsFixer;
 
+use Generator;
 use GherkinCsFixer\Exceptions\FileNotFound;
 use GherkinCsFixer\Exceptions\FileWriteException;
-use Generator;
 
 /**
  * Helper for reading and writing files.

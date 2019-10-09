@@ -2,6 +2,7 @@
 
 namespace GherkinCsFixer;
 
+use Generator;
 use GherkinCsFixer\Exceptions\FileNotFound;
 use GherkinCsFixer\Exceptions\FileWriteException;
 use GherkinCsFixer\Exceptions\InvalidKeywordException;
@@ -9,7 +10,6 @@ use GherkinCsFixer\Fixers\FixerFactory;
 use GherkinCsFixer\Fixers\TableFixer;
 use GherkinCsFixer\Parsers\StepParser;
 use GherkinCsFixer\Parsers\TableParser;
-use Generator;
 
 /**
  * The main operation class.

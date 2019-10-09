@@ -2,8 +2,8 @@
 
 namespace GherkinCsFixer\Parsers;
 
-use GherkinCsFixer\Dto\TableDto;
 use Generator;
+use GherkinCsFixer\Dto\TableDto;
 
 /**
  * Parse consecutive lines as table and fix the formatting.
