@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer;
+namespace GherkinCsFixer;
 
-use BehatCsFixer\Exceptions\FileNotFound;
-use BehatCsFixer\Exceptions\FileWriteException;
+use GherkinCsFixer\Exceptions\FileNotFound;
+use GherkinCsFixer\Exceptions\FileWriteException;
 use Generator;
 
 /**

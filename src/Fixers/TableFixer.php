@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Fixers;
+namespace GherkinCsFixer\Fixers;
 
-use BehatCsFixer\Dto\TableDto;
+use GherkinCsFixer\Dto\TableDto;
 
 /**
  * Fixes the table formatting.

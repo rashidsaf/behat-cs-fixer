@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
-$autoloader = __DIR__ . '/../../../autoload.php';
+$autoloader = __DIR__ . '/../vendor/autoload.php';
 
 if (!file_exists($autoloader)) {
     fwrite(STDERR,
@@ -14,7 +14,7 @@ if (!file_exists($autoloader)) {
 
 require_once $autoloader;
 
-use BehatCsFixer\Application;
+use GherkinCsFixer\Application;
 
 array_shift($argv);
 

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Parsers;
+namespace GherkinCsFixer\Parsers;
 
-use BehatCsFixer\Dto\TableDto;
+use GherkinCsFixer\Dto\TableDto;
 use Generator;
 
 /**

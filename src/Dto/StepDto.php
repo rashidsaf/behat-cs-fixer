@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Dto;
+namespace GherkinCsFixer\Dto;
 
-use BehatCsFixer\Exceptions\InvalidKeywordException;
+use GherkinCsFixer\Exceptions\InvalidKeywordException;
 
 /**
  * DTO class to carry step line information.

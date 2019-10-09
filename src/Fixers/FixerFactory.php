@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Fixers;
+namespace GherkinCsFixer\Fixers;
 
-use BehatCsFixer\Dto\StepDto;
+use GherkinCsFixer\Dto\StepDto;
 
 /**
  * Fixer factory class, get fixer class by keyword.
@@ -19,7 +19,7 @@ class FixerFactory
      */
     public static function getStepFixer(StepDto $stepDTO): StepFixer
     {
-        $fixerClass = '\BehatCsFixer\Fixers\\'.$stepDTO->getKeyword().'StepFixer';
+        $fixerClass = '\GherkinCsFixer\Fixers\\'.$stepDTO->getKeyword().'StepFixer';
 
         return new $fixerClass($stepDTO->getBody());
     }

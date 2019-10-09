@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Parsers;
+namespace GherkinCsFixer\Parsers;
 
-use BehatCsFixer\Dto\StepDto;
-use BehatCsFixer\Exceptions\InvalidKeywordException;
+use GherkinCsFixer\Dto\StepDto;
+use GherkinCsFixer\Exceptions\InvalidKeywordException;
 
 /**
  * Parse the line from file, into step and keywords.

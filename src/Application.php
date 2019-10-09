@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer;
+namespace GherkinCsFixer;
 
-use BehatCsFixer\Exceptions\FileNotFound;
-use BehatCsFixer\Exceptions\FileWriteException;
-use BehatCsFixer\Exceptions\InvalidKeywordException;
-use BehatCsFixer\Fixers\FixerFactory;
-use BehatCsFixer\Fixers\TableFixer;
-use BehatCsFixer\Parsers\StepParser;
-use BehatCsFixer\Parsers\TableParser;
+use GherkinCsFixer\Exceptions\FileNotFound;
+use GherkinCsFixer\Exceptions\FileWriteException;
+use GherkinCsFixer\Exceptions\InvalidKeywordException;
+use GherkinCsFixer\Fixers\FixerFactory;
+use GherkinCsFixer\Fixers\TableFixer;
+use GherkinCsFixer\Parsers\StepParser;
+use GherkinCsFixer\Parsers\TableParser;
 use Generator;
 
 /**

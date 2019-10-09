@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Dto;
+namespace GherkinCsFixer\Dto;
 
 /**
  * DTO class to carry table information.

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Fixers;
+namespace GherkinCsFixer\Fixers;
 
 /**
  * Fixer class for Feature keyword.
