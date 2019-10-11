@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace GherkinCsFixer;
+namespace Medology\GherkinCsFixer;
 
 use Generator;
-use GherkinCsFixer\Exceptions\FileNotFound;
-use GherkinCsFixer\Exceptions\FileWriteException;
-use GherkinCsFixer\Exceptions\InvalidKeywordException;
-use GherkinCsFixer\Fixers\FixerFactory;
-use GherkinCsFixer\Fixers\TableFixer;
-use GherkinCsFixer\Parsers\StepParser;
-use GherkinCsFixer\Parsers\TableParser;
+use Medology\GherkinCsFixer\Exceptions\FileNotFound;
+use Medology\GherkinCsFixer\Exceptions\FileWriteException;
+use Medology\GherkinCsFixer\Exceptions\InvalidKeywordException;
+use Medology\GherkinCsFixer\Fixers\FixerFactory;
+use Medology\GherkinCsFixer\Fixers\TableFixer;
+use Medology\GherkinCsFixer\Parsers\StepParser;
+use Medology\GherkinCsFixer\Parsers\TableParser;
 
 /**
  * The main operation class.

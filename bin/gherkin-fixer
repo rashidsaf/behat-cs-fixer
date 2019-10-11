@@ -14,7 +14,7 @@ if (!file_exists($autoloader)) {
 
 require_once $autoloader;
 
-use GherkinCsFixer\Application;
+use Medology\GherkinCsFixer\Application;
 
 array_shift($argv);
 

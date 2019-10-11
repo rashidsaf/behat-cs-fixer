@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace GherkinCsFixer\Fixers;
+namespace Medology\GherkinCsFixer\Fixers;
 
 /**
  * Fixer class for Examples keyword.

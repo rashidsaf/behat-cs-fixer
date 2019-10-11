@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace GherkinCsFixer\Fixers;
+namespace Medology\GherkinCsFixer\Fixers;
 
-use GherkinCsFixer\Dto\TableDto;
+use Medology\GherkinCsFixer\Dto\TableDto;
 
 /**
  * Fixes the table formatting.

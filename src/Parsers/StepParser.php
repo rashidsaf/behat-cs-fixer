@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace GherkinCsFixer\Parsers;
+namespace Medology\GherkinCsFixer\Parsers;
 
-use GherkinCsFixer\Dto\StepDto;
-use GherkinCsFixer\Exceptions\InvalidKeywordException;
+use Medology\GherkinCsFixer\Dto\StepDto;
+use Medology\GherkinCsFixer\Exceptions\InvalidKeywordException;
 
 /**
  * Parse the line from file, into step and keywords.

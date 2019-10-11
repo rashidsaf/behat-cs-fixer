@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace GherkinCsFixer\Exceptions;
+namespace Medology\GherkinCsFixer\Exceptions;
 
 use Exception;
 

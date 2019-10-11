@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace GherkinCsFixer\Dto;
+namespace Medology\GherkinCsFixer\Dto;
 
 /**
  * DTO class to carry table information.

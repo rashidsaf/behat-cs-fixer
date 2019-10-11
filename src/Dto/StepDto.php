@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace GherkinCsFixer\Dto;
+namespace Medology\GherkinCsFixer\Dto;
 
-use GherkinCsFixer\Exceptions\InvalidKeywordException;
+use Medology\GherkinCsFixer\Exceptions\InvalidKeywordException;
 
 /**
  * DTO class to carry step line information.
