@@ -1,14 +1,14 @@
 {
-  "name": "medology/behat-cs-fixer",
-  "description": "Behat code formatter",
+  "name": "medology/gherkin-cs-fixer",
+  "description": "Gherkin code auto formatter",
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "BehatCsFixer\\": "src/"
+      "Medology\\GherkinCsFixer\\": "src/"
     }
   },
   "bin": [
-    "bin/behat-fixer"
+    "bin/gherkin-fixer"
   ],
   "require": {
     "php": ">=7.1.0"

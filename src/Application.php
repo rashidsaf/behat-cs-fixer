@@ -1,15 +1,15 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer;
+namespace Medology\GherkinCsFixer;
 
-use BehatCsFixer\Exceptions\FileNotFound;
-use BehatCsFixer\Exceptions\FileWriteException;
-use BehatCsFixer\Exceptions\InvalidKeywordException;
-use BehatCsFixer\Fixers\FixerFactory;
-use BehatCsFixer\Fixers\TableFixer;
-use BehatCsFixer\Parsers\StepParser;
-use BehatCsFixer\Parsers\TableParser;
 use Generator;
+use Medology\GherkinCsFixer\Exceptions\FileNotFound;
+use Medology\GherkinCsFixer\Exceptions\FileWriteException;
+use Medology\GherkinCsFixer\Exceptions\InvalidKeywordException;
+use Medology\GherkinCsFixer\Fixers\FixerFactory;
+use Medology\GherkinCsFixer\Fixers\TableFixer;
+use Medology\GherkinCsFixer\Parsers\StepParser;
+use Medology\GherkinCsFixer\Parsers\TableParser;
 
 /**
  * The main operation class.

@@ -22,7 +22,7 @@ After fixed
 
 ### Usage:
   
-    behat-fixer /path/to/test1.feature /path/to/test2.feature ...
+    gherkin-fixer /path/to/test1.feature /path/to/test2.feature ...
     
 ### Dependencies
 - PHP >= 7.1.0

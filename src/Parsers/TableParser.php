@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer\Parsers;
+namespace Medology\GherkinCsFixer\Parsers;
 
-use BehatCsFixer\Dto\TableDto;
 use Generator;
+use Medology\GherkinCsFixer\Dto\TableDto;
 
 /**
  * Parse consecutive lines as table and fix the formatting.

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace BehatCsFixer;
+namespace Medology\GherkinCsFixer;
 
-use BehatCsFixer\Exceptions\FileNotFound;
-use BehatCsFixer\Exceptions\FileWriteException;
 use Generator;
+use Medology\GherkinCsFixer\Exceptions\FileNotFound;
+use Medology\GherkinCsFixer\Exceptions\FileWriteException;
 
 /**
  * Helper for reading and writing files.
