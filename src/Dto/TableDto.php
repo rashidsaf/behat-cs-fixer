@@ -7,7 +7,7 @@ namespace Medology\GherkinCsFixer\Dto;
  */
 class TableDto
 {
-    /** @var array Multilevel associative array of table cells. */
+    /** @var TableRowDto[] List of TableRowDto rows. */
     private $rows;
 
     /** @var array Width of every column in the table. */
@@ -16,8 +16,8 @@ class TableDto
     /**
      * Fill the properties from array.
      *
-     * @param array[] $cells  Associative array of table cell values
-     * @param int[]   $widths List of columns widths
+     * @param TableRowDto[] $cells  List of TableRowDto
+     * @param int[]         $widths List of columns widths
      */
     public function __construct(array $cells, array $widths)
     {
@@ -26,11 +26,11 @@ class TableDto
     }
 
     /**
-     * Gets the cells.
+     * Gets the row cells.
      *
-     * @return array
+     * @return TableRowDto[]
      */
-    public function getTable(): array
+    public function getRows(): array
     {
         return $this->rows;
     }

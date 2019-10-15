@@ -3,6 +3,7 @@
 namespace Medology\GherkinCsFixer\Fixers;
 
 use Medology\GherkinCsFixer\Dto\TableDto;
+use Medology\GherkinCsFixer\Dto\TableRowDto;
 
 /**
  * Fixes the table formatting.
@@ -25,8 +26,8 @@ class TableFixer
     {
         $this->dto = $dto;
         $table_content = '';
-        foreach ($this->dto->getTable() as $row) {
-            $table_content .= $this->formatRow($row);
+        foreach ($this->dto->getRows() as $rowDto) {
+            $table_content .= $this->formatRow($rowDto);
         }
 
         return $table_content;
@@ -35,27 +36,31 @@ class TableFixer
     /**
      * Set padding to make every column same width.
      *
-     * @param  string[] $row List row cells.
+     * @param  TableRowDto $rowDto List row cells.
      * @return string[]
      */
-    private function setCellPadding(array $row): array
+    private function setCellPadding(TableRowDto $rowDto): array
     {
         return array_map(function ($column, $cell) {
             return str_pad($cell, $this->dto->getColumnLength($column), ' ', STR_PAD_RIGHT);
-        }, array_keys($row), $row);
+        }, array_keys($rowDto->getCells()), $rowDto->getCells());
     }
 
     /**
      * Makes formatted string out of table row cells.
      *
-     * @param  string[] $row List row cells.
+     * @param  TableRowDto $rowDto List row cells.
      * @return string
      */
-    private function formatRow(array $row): string
+    private function formatRow(TableRowDto $rowDto): string
     {
-        $row = $this->setCellPadding($row);
         $left_padding = str_repeat(' ', self::PADDING);
-        $content = '| '.implode(' | ', $row) . ' |' . PHP_EOL;
+
+        if ($rowDto->getType() == 'comment') {
+            return $left_padding.'#'.$rowDto->getRaw().PHP_EOL;
+        }
+        $row_cells = $this->setCellPadding($rowDto);
+        $content = '| '.implode(' | ', $row_cells) . ' |' . PHP_EOL;
 
         return $left_padding.$content;
     }
