@@ -5,7 +5,7 @@ namespace Medology\GherkinCsFixer\Fixers;
 /**
  * Fixer class for commented lines.
  */
-class PoundStepFixer extends StepFixer
+class CommentStepFixer extends StepFixer
 {
     protected $padding = 0;
     protected $keyword = '#';

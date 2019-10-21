@@ -14,12 +14,6 @@ Initially
 After fixed
 ![Screenshot from 2019-10-04 15-07-23](https://user-images.githubusercontent.com/52429111/66236682-c41b3880-e6b8-11e9-90c9-fd66333f7158.png)
 
-### Known issues:
-- Extra newlines are not deleted.
-- Doesn't check newline end the end of the file.
-- Doesn't remove extra spaces inside steps other than table row steps.
-- Commented table step makes the table to be recognized as 2 separate tables.
-
 ### Usage:
   
     gherkin-fixer /path/to/test1.feature /path/to/test2.feature ...

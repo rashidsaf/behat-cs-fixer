@@ -19,7 +19,9 @@ class StepParser
     public function __construct()
     {
         $this->regex = '/^(\s+)?(?P<keyword>' .
-            implode('|', StepDto::STEP_KEYWORDS) . '|\|)(?P<body>.*)/';
+            implode('|', StepDto::STEP_KEYWORDS) . '|' .
+            implode('|\\', array_keys(StepDto::SYMBOL_KEYWORDS)) .
+            ')(?P<body>.*)/';
     }
 
     /**

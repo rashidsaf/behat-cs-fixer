@@ -20,7 +20,13 @@ class StepDto
         'Then',
         'And',
         'But',
-        '#',
+    ];
+
+    /** @var array List of special characters that are not actually step keywords. */
+    public const SYMBOL_KEYWORDS = [
+        '#'                    => 'Comment', // Comment lines
+        '|'                    => 'Table',   // Table pipe
+        PyStringsDto::KEYWORD  => PyStringsDto::KEYWORD, // PyStrings
     ];
 
     /** @var string Step line without keyword prefix. */
@@ -38,15 +44,15 @@ class StepDto
     {
         if (empty($content['keyword'])) {
             $this->keyword = 'None';
-            $this->body = $content['body'] ?? '';
-        } elseif ($content['keyword'] == '|') {
-            $this->keyword = 'Table';
-        } elseif (!in_array($content['keyword'], self::STEP_KEYWORDS)) {
-            throw new InvalidKeywordException('Mismatched parsed keyword: '.$content['keyword']);
+        } elseif (isset(self::SYMBOL_KEYWORDS[$content['keyword']])) {
+            $this->keyword = self::SYMBOL_KEYWORDS[$content['keyword']];
+        } elseif (in_array($content['keyword'], self::STEP_KEYWORDS)) {
+            $this->keyword = $content['keyword'];
         } else {
-            $this->keyword = $content['keyword'] == '#' ? 'Pound' : $content['keyword'];
-            $this->body = $content['body'];
+            throw new InvalidKeywordException('Mismatched parsed keyword: '.$content['keyword']);
         }
+
+        $this->body = $content['body'] ?? '';
     }
 
     /**

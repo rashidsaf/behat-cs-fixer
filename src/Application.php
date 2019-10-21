@@ -3,11 +3,14 @@
 namespace Medology\GherkinCsFixer;
 
 use Generator;
+use Medology\GherkinCsFixer\Dto\PyStringsDto;
 use Medology\GherkinCsFixer\Exceptions\FileNotFound;
 use Medology\GherkinCsFixer\Exceptions\FileWriteException;
 use Medology\GherkinCsFixer\Exceptions\InvalidKeywordException;
 use Medology\GherkinCsFixer\Fixers\FixerFactory;
+use Medology\GherkinCsFixer\Fixers\PyStringsFixer;
 use Medology\GherkinCsFixer\Fixers\TableFixer;
+use Medology\GherkinCsFixer\Parsers\PyStringsParser;
 use Medology\GherkinCsFixer\Parsers\StepParser;
 use Medology\GherkinCsFixer\Parsers\TableParser;
 
@@ -25,8 +28,14 @@ class Application
     /** @var TableParser Instance of TableParser */
     private $tableParser;
 
+    /** @var PyStringsParser Instance of MultilineParser */
+    private $pyStringsParser;
+
     /** @var TableFixer Instance of TableFixer */
     private $tableFixer;
+
+    /** @var PyStringsFixer Instance of MultilineFixer */
+    private $pyStringsFixer;
 
     /**
      * Application constructor.
@@ -39,6 +48,8 @@ class Application
         $this->stepParser = new StepParser();
         $this->tableParser = new TableParser();
         $this->tableFixer = new TableFixer();
+        $this->pyStringsFixer = new PyStringsFixer();
+        $this->pyStringsParser = new PyStringsParser();
     }
 
     /**
@@ -86,6 +97,9 @@ class Application
         $stepDto = $this->stepParser->run($fileReader->current());
         if ($stepDto->getKeyword() == 'Table') {
             return $this->tableFixer->run($this->tableParser->run($fileReader));
+        }
+        if ($stepDto->getKeyword() == PyStringsDto::KEYWORD) {
+            return $this->pyStringsFixer->run($this->pyStringsParser->run($fileReader));
         }
 
         $fileReader->next();
