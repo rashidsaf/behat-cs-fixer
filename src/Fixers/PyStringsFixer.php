@@ -45,7 +45,7 @@ class PyStringsFixer
      */
     private function calculateLeftPadding(): int
     {
-        $padding =  min(array_map(function ($value) {
+        $padding = min(array_map(function ($value) {
             return strspn($value, ' ');
         }, $this->dto->getContent()));
 
