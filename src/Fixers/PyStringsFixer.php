@@ -10,7 +10,7 @@ use Medology\GherkinCsFixer\Dto\PyStringsDto;
 class PyStringsFixer
 {
     /** @var int Padding value from left */
-    private const PADDING = 13;
+    private const PADDING = 10;
 
     /**
      * Reformat the text.
@@ -20,8 +20,16 @@ class PyStringsFixer
      */
     public function run(PyStringsDto $dto): string
     {
-        $block_tag = str_pad(PyStringsDto::KEYWORD, self::PADDING, ' ', STR_PAD_LEFT) .PHP_EOL;
+        $block_tag = str_pad(
+                PyStringsDto::KEYWORD,
+                strlen(PyStringsDto::KEYWORD) + self::PADDING,
+                ' ',
+                STR_PAD_LEFT) . PHP_EOL;
+        $text = '';
+        foreach ($dto->getContent() as $row_text) {
+            $text .= str_pad($row_text, strlen($row_text) + self::PADDING, ' ', STR_PAD_LEFT);
+        }
 
-        return $block_tag . implode('', $dto->getContent()) . $block_tag;
+        return  $block_tag . $text . $block_tag;
     }
 }
