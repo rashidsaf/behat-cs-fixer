@@ -3,11 +3,11 @@
 namespace Medology\GherkinCsFixer\Fixers;
 
 /**
- * Fixer class for Scenario keyword.
+ * Fixer class for scenario tags.
  */
-class ScenarioStepFixer extends StepFixer
+class TagStepFixer extends StepFixer
 {
     protected $padding = 2;
-    protected $keyword = 'Scenario';
+    protected $keyword = '@';
     protected $newline = true;
 }

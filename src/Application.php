@@ -4,6 +4,7 @@ namespace Medology\GherkinCsFixer;
 
 use Generator;
 use Medology\GherkinCsFixer\Dto\PyStringsDto;
+use Medology\GherkinCsFixer\Dto\StepDto;
 use Medology\GherkinCsFixer\Exceptions\FileNotFound;
 use Medology\GherkinCsFixer\Exceptions\FileWriteException;
 use Medology\GherkinCsFixer\Exceptions\InvalidKeywordException;
@@ -37,10 +38,14 @@ class Application
     /** @var PyStringsFixer Instance of MultilineFixer */
     private $pyStringsFixer;
 
+    /** @var StepDto Storing previous step information */
+    private $previousStepDto;
+
     /**
      * Application constructor.
      *
-     * @param string[] $files
+     * @param string[] $files List of the files to be fixed.
+     * @throws InvalidKeywordException When StepDto keyword mismatch
      */
     public function __construct(array $files)
     {
@@ -50,6 +55,7 @@ class Application
         $this->tableFixer = new TableFixer();
         $this->pyStringsFixer = new PyStringsFixer();
         $this->pyStringsParser = new PyStringsParser();
+        $this->previousStepDto = new StepDto();
     }
 
     /**
@@ -94,7 +100,7 @@ class Application
      */
     private function fixStep(Generator $fileReader): string
     {
-        $stepDto = $this->stepParser->run($fileReader->current());
+        $stepDto = $this->stepParser->run($fileReader->current(), $this->previousStepDto);
         if ($stepDto->getKeyword() == 'Table') {
             return $this->tableFixer->run($this->tableParser->run($fileReader));
         }
@@ -103,6 +109,7 @@ class Application
         }
 
         $fileReader->next();
+        $this->previousStepDto = $stepDto->getKeyword() != 'None' ? $stepDto : $this->previousStepDto;
 
         return FixerFactory::getStepFixer($stepDto)->run();
     }

@@ -24,6 +24,7 @@ class StepDto
 
     /** @var array List of special characters that are not actually step keywords. */
     public const SYMBOL_KEYWORDS = [
+        '@'                    => 'Tag',    // Scenario tags
         '#'                    => 'Comment', // Comment lines
         '|'                    => 'Table',   // Table pipe
         PyStringsDto::KEYWORD  => PyStringsDto::KEYWORD, // PyStrings
@@ -31,8 +32,12 @@ class StepDto
 
     /** @var string Step line without keyword prefix. */
     private $body = '';
+
     /** @var string Step line keyword. */
     private $keyword;
+
+    /** @var bool New line before the step or not. */
+    private $line_break;
 
     /**
      * Fill the properties from array.
@@ -53,6 +58,7 @@ class StepDto
         }
 
         $this->body = $content['body'] ?? '';
+        $this->line_break = $content['line_break'] ?? false;
     }
 
     /**
@@ -73,5 +79,15 @@ class StepDto
     public function getBody(): string
     {
         return $this->body;
+    }
+
+    /**
+     * Insert new line before ?
+     *
+     * @return bool
+     */
+    public function hasLineBreak(): bool
+    {
+        return $this->line_break;
     }
 }
