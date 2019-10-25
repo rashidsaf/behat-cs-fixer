@@ -36,7 +36,7 @@ abstract class StepFixer
      */
     public function run(): string
     {
-        return ($this->newline ? PHP_EOL : "") .
+        return ($this->newline ? PHP_EOL : '') .
             str_repeat(' ', $this->padding) .
             $this->keyword .
             $this->step_body .

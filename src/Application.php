@@ -44,7 +44,7 @@ class Application
     /**
      * Application constructor.
      *
-     * @param string[] $files List of the files to be fixed.
+     * @param  string[]                $files List of the files to be fixed.
      * @throws InvalidKeywordException When StepDto keyword mismatch
      */
     public function __construct(array $files)

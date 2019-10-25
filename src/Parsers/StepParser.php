@@ -27,10 +27,10 @@ class StepParser
     /**
      * Parses the line from the file and return as StepDTO.
      *
-     * @param string $raw_step Raw text line from the file
-     * @param StepDto $previousStep Previous step information
-     * @return StepDto
+     * @param  string                  $raw_step     Raw text line from the file
+     * @param  StepDto                 $previousStep Previous step information
      * @throws InvalidKeywordException When the keyword mismatched with check.
+     * @return StepDto
      */
     public function run(string $raw_step, StepDto $previousStep): StepDto
     {
