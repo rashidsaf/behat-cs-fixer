@@ -29,26 +29,14 @@ class PyStringsFixer
                 strlen(PyStringsDto::KEYWORD) + self::PADDING,
                 ' ',
                 STR_PAD_LEFT) . PHP_EOL;
+
         $text = '';
-        $leftPadding = $this->calculateLeftPadding();
-        foreach ($this->dto->getContent() as $row_text) {
-            $text .= str_pad($row_text, strlen($row_text) + $leftPadding, ' ', STR_PAD_LEFT);
+        $start_padding = $this->dto->getHeaderPadding();
+        foreach ($this->dto->getContent() as $row) {
+            $leftPadding = self::PADDING + max($row['padding'] - $start_padding,0);
+            $text .= str_repeat(' ', $leftPadding) . $row['text'] . PHP_EOL;
         }
 
         return  $block_tag . $text . $block_tag;
-    }
-
-    /**
-     * Calculate the minimum left padding from the left side.
-     *
-     * @return int
-     */
-    private function calculateLeftPadding(): int
-    {
-        $padding = min(array_map(function ($value) {
-            return strspn($value, ' ');
-        }, $this->dto->getContent()));
-
-        return $padding > self::PADDING ? 0 : self::PADDING - $padding;
     }
 }
