@@ -33,7 +33,7 @@ class PyStringsFixer
         $text = '';
         $start_padding = $this->dto->getHeaderPadding();
         foreach ($this->dto->getContent() as $row) {
-            $leftPadding = self::PADDING + max($row['padding'] - $start_padding,0);
+            $leftPadding = self::PADDING + max($row['padding'] - $start_padding, 0);
             $text .= str_repeat(' ', $leftPadding) . $row['text'] . PHP_EOL;
         }
 

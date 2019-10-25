@@ -19,8 +19,8 @@ class PyStringsDto
     /**
      * Fill the properties from array.
      *
-     * @param array[] $rows List of text lines and padding from left
-     * @param int $padding Initial padding of the starting tag from left
+     * @param array[] $rows    List of text lines and padding from left
+     * @param int     $padding Initial padding of the starting tag from left
      */
     public function __construct(array $rows, int $padding = 0)
     {

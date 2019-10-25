@@ -25,8 +25,8 @@ class PyStringsParser
         $rows = [];
         while (PyStringsDto::KEYWORD != trim($fileReader->current())) {
             $rows[] = [
-                'text' => trim($fileReader->current()),
-                'padding' => strspn($fileReader->current(), ' ')
+                'text'    => trim($fileReader->current()),
+                'padding' => strspn($fileReader->current(), ' '),
             ];
 
             $fileReader->next();
