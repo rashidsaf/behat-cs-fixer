@@ -27,14 +27,16 @@ class StepParser
     /**
      * Parses the line from the file and return as StepDTO.
      *
-     * @param  string                  $raw_step Raw text line from the file
+     * @param  string                  $raw_step     Raw text line from the file
+     * @param  StepDto                 $previousStep Previous step information
      * @throws InvalidKeywordException When the keyword mismatched with check.
      * @return StepDto
      */
-    public function run(string $raw_step): StepDto
+    public function run(string $raw_step, StepDto $previousStep): StepDto
     {
-        return preg_match($this->regex, $raw_step, $m)
-            ? new StepDto($m)
-            : new StepDto(['body'=>$raw_step]);
+        $dto_data = preg_match($this->regex, $raw_step, $m) ? $m : ['body'=>$raw_step];
+        $dto_data['line_break'] = $previousStep->getKeyword() != 'Tag';
+
+        return new StepDto($dto_data);
     }
 }

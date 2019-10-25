@@ -13,14 +13,19 @@ class PyStringsDto
     /** @var string Text block starting and ending */
     public const KEYWORD = '"""';
 
+    /** @var int Initial padding of the starting tag from left */
+    private $padding = 0;
+
     /**
      * Fill the properties from array.
      *
-     * @param string[] $rows List of text rows
+     * @param array[] $rows    List of text lines and padding from left
+     * @param int     $padding Initial padding of the starting tag from left
      */
-    public function __construct(array $rows)
+    public function __construct(array $rows, int $padding = 0)
     {
         $this->rows = $rows;
+        $this->padding = $padding;
     }
 
     /**
@@ -31,5 +36,15 @@ class PyStringsDto
     public function getContent(): array
     {
         return $this->rows;
+    }
+
+    /**
+     * left starting tag padding value.
+     *
+     * @return int
+     */
+    public function getHeaderPadding(): int
+    {
+        return $this->padding;
     }
 }

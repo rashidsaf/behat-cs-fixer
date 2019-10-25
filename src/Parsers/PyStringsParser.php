@@ -19,15 +19,21 @@ class PyStringsParser
     public function run(Generator $fileReader): PyStringsDto
     {
         // Skip the starting line of the block
+        $header_padding = strspn($fileReader->current(), ' ');
         $fileReader->next();
+
         $rows = [];
-        while (PyStringsDto::KEYWORD != trim(($line = $fileReader->current()))) {
-            $rows[] = $line;
+        while (PyStringsDto::KEYWORD != trim($fileReader->current())) {
+            $rows[] = [
+                'text'    => trim($fileReader->current()),
+                'padding' => strspn($fileReader->current(), ' '),
+            ];
+
             $fileReader->next();
         }
         // Skip the closing line of the block
         $fileReader->next();
 
-        return new PyStringsDto($rows);
+        return new PyStringsDto($rows, $header_padding);
     }
 }

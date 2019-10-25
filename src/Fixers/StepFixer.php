@@ -2,6 +2,8 @@
 
 namespace Medology\GherkinCsFixer\Fixers;
 
+use Medology\GherkinCsFixer\Dto\StepDto;
+
 /**
  * Abstract Fixer main class.
  *
@@ -13,14 +15,18 @@ abstract class StepFixer
     /** @var string Step body. */
     protected $step_body;
 
+    /** @var bool Has new line before this step. */
+    protected $newline = false;
+
     /**
      * Assign the body variable.
      *
-     * @param string $step_body
+     * @param StepDto $stepDto All the information about this step
      */
-    public function __construct(string $step_body)
+    public function __construct(StepDto $stepDto)
     {
-        $this->step_body = $step_body;
+        $this->step_body = $stepDto->getBody();
+        $this->newline = $stepDto->hasLineBreak() && $this->newline;
     }
 
     /**
@@ -30,6 +36,10 @@ abstract class StepFixer
      */
     public function run(): string
     {
-        return str_repeat(' ', $this->padding) . $this->keyword . $this->step_body . PHP_EOL;
+        return ($this->newline ? PHP_EOL : '') .
+            str_repeat(' ', $this->padding) .
+            $this->keyword .
+            $this->step_body .
+            PHP_EOL;
     }
 }

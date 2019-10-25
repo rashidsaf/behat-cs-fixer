@@ -21,6 +21,6 @@ class FixerFactory
     {
         $fixerClass = '\Medology\GherkinCsFixer\Fixers\\'.$stepDTO->getKeyword().'StepFixer';
 
-        return new $fixerClass($stepDTO->getBody());
+        return new $fixerClass($stepDTO);
     }
 }

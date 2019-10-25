@@ -48,7 +48,10 @@ class TableParser
         if (!preg_match('/^(\s+)?\|(?P<step>.*)/', $table_row)) {
             return null;
         }
-        $cells = preg_split('/\s*\|\s*/', $table_row);
+
+        // Split by pipe
+        $cells = preg_split('~\\\\.(*SKIP)(*FAIL)|\|~s', $table_row);
+        $cells = array_map('trim', $cells);
         array_pop($cells);
         array_shift($cells);
 
