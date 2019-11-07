@@ -1,1 +1,5 @@
 .pullapprove.yml
+bin/init
+bin/lib
+bin/linux-sed
+bin/php
