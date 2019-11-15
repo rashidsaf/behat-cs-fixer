@@ -17,5 +17,4 @@ docker run \
     ${USER_ARG} \
     -v "$(pwd)":/workdir \
     -v ~/.composer:/home/user/.composer \
-    -w /workdir \
 	${PHP_IMAGE} php "$@"
