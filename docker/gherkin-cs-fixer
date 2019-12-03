@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php declare(strict_types=1);
 
-$autoloader = __DIR__ . '/../vendor/autoload.php';
+$autoloader = '/project/vendor/autoload.php';
 
 if (!file_exists($autoloader)) {
     fwrite(STDERR,

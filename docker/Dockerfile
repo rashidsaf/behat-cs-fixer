@@ -1,8 +1,10 @@
-FROM chekote/php:7.3.9.a-composer
+ARG PHP_IMAGE
+FROM ${PHP_IMAGE}
 
 COPY . /project
+COPY ./docker/entrypoint.sh /usr/local/bin/entrypoint-gherkin-fixer.sh
+COPY ./docker/gherkin-cs-fixer /usr/local/bin/gherkin-cs-fixer
 
-RUN chmod a+x /project/bin/gherkin-fixer; \
-    rm -rf /project/docker
+RUN rm -rf /project/docker
 
-ENTRYPOINT ["/project/bin/gherkin-fixer"]
+ENTRYPOINT ["/usr/local/bin/entrypoint-gherkin-fixer.sh"]

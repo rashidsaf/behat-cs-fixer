@@ -17,6 +17,18 @@ After fixed
 ### Usage:
   
     gherkin-fixer /path/to/test1.feature /path/to/test2.feature ...
-    
+
+### Setting up the project for development:
+
+You will also want to ensure that `./bin` & `./vendor/bin` is in your `$PATH` and is the highest priority. `./node_modules/.bin` should be included in you `$PATH` at the lowest priority. You can do so by adding the following to your shell profile:
+
+    export PATH=./bin:./vendor/bin:$PATH:./node_modules/.bin
+  
+Run `docker_build`. This will build setup the project dependencies if they are not already and create a local docker image called `local:gherkin_fixer` that you can use for testing
+
+### Testing
+
+This project has PHPUnit testing. To run tests run `phpunit`
+
 ### Dependencies
 - PHP >= 7.1.0
