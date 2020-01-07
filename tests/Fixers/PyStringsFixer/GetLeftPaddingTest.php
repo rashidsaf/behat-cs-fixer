@@ -35,7 +35,7 @@ class GetLeftPaddingTest extends TestCase
     public function paddingExamples(): array
     {
         return [
-        //  startPadding  textPadding  expectedPadding
+            //  startPadding  textPadding  expectedPadding
             [10,          10,          10],
             [5,           10,          15],
             [10,          5,           10],

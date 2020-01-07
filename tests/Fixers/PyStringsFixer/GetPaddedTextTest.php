@@ -59,7 +59,7 @@ class GetPaddedTextTest extends TestCase
     public function paddingExamples(): array
     {
         return [
-        //  startPadding  textPadding
+            //  startPadding  textPadding
             [0,           0],
             [1,           10],
             [15,          10],
