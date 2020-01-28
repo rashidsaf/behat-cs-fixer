@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Medology\GherkinCsFixer\Fixers\PyStringsFixer;
 use Tests\TestCase;
@@ -11,7 +13,7 @@ class GetBlockTagTest extends TestCase
     /**
      * Test the block tag ends with a new line.
      *
-     * @throws ReflectionException When fails to create a reflection class.
+     * @throws ReflectionException when fails to create a reflection class
      */
     public function testTheBlockTagEndsWithANewLine(): void
     {
@@ -27,7 +29,7 @@ class GetBlockTagTest extends TestCase
     /**
      * Test the block tag has the correct amount of padding.
      *
-     * @throws ReflectionException When fails to create a reflection class.
+     * @throws ReflectionException when fails to create a reflection class
      */
     public function testTheBlockTagHasTheCorrectAmountOfPadding(): void
     {
@@ -43,7 +45,7 @@ class GetBlockTagTest extends TestCase
     /**
      * Test the block tag has quotes in the correct place.
      *
-     * @throws ReflectionException When fails to create a reflection class.
+     * @throws ReflectionException when fails to create a reflection class
      */
     public function testTheBlockTagHasQuotesInCorrectPlace(): void
     {

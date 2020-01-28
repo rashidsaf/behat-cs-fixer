@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tests;
 
@@ -13,12 +15,14 @@ class TestCase extends BaseTestCase
     /**
      * Call protected/private method of a class.
      *
-     * @param  object|string       &$object    Instantiated object that we will run method on.
-     * @param  string              $methodName Method name to call
-     * @param  array               $parameters Array of parameters to pass into method.
-     * @param  bool                $static     Should call a static method.
-     * @throws ReflectionException If there is a problem invoking the method.
-     * @return mixed               Method return.
+     * @param object|string &$object    Instantiated object that we will run method on
+     * @param string        $methodName Method name to call
+     * @param array         $parameters array of parameters to pass into method
+     * @param bool          $static     should call a static method
+     *
+     * @throws ReflectionException if there is a problem invoking the method
+     *
+     * @return mixed method return
      */
     protected function invokeMethod($object, $methodName, array $parameters = [], bool $static = false)
     {
@@ -32,9 +36,11 @@ class TestCase extends BaseTestCase
     /**
      * Call protected/private property of a class.
      *
-     * @param  object|string       $object Instantiated object that we will access the property.
-     * @param  string              $name   Name of the property to access.
+     * @param object|string $object instantiated object that we will access the property
+     * @param string        $name   name of the property to access
+     *
      * @throws ReflectionException
+     *
      * @return ReflectionProperty
      */
     protected function makePropertyAccessible($object, $name)

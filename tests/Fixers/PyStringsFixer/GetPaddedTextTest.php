@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Medology\GherkinCsFixer\Fixers\PyStringsFixer;
 use Tests\TestCase;
@@ -13,9 +15,10 @@ class GetPaddedTextTest extends TestCase
      *
      * @dataProvider paddingExamples
      *
-     * @param  int                 $startPadding The original start padding
-     * @param  int                 $textPadding  The original text padding
-     * @throws ReflectionException When fails to create a reflection class.
+     * @param int $startPadding The original start padding
+     * @param int $textPadding  The original text padding
+     *
+     * @throws ReflectionException when fails to create a reflection class
      */
     public function testTextEndsWithANewLine(int $startPadding, int $textPadding): void
     {
@@ -37,9 +40,10 @@ class GetPaddedTextTest extends TestCase
      *
      * @dataProvider paddingExamples
      *
-     * @param  int                 $startPadding The original start padding
-     * @param  int                 $textPadding  The original text padding
-     * @throws ReflectionException When fails to create a reflection class.
+     * @param int $startPadding The original start padding
+     * @param int $textPadding  The original text padding
+     *
+     * @throws ReflectionException when fails to create a reflection class
      */
     public function testTextContainsOriginalString(int $startPadding, int $textPadding): void
     {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 use Medology\GherkinCsFixer\Fixers\PyStringsFixer;
 use Tests\TestCase;
@@ -13,10 +15,11 @@ class GetLeftPaddingTest extends TestCase
      *
      * @dataProvider paddingExamples
      *
-     * @param  int                 $startPadding    The starting amount of padding before the real data.
-     * @param  int                 $textPadding     The amount of padding the single line of text is supposed to have.
-     * @param  int                 $expectedPadding The expected amount of total padding for the line.
-     * @throws ReflectionException When fails to create a reflection class.
+     * @param int $startPadding    the starting amount of padding before the real data
+     * @param int $textPadding     the amount of padding the single line of text is supposed to have
+     * @param int $expectedPadding the expected amount of total padding for the line
+     *
+     * @throws ReflectionException when fails to create a reflection class
      */
     public function testCorrectLengthIsReturned(int $startPadding, int $textPadding, int $expectedPadding): void
     {
