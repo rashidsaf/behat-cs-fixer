@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Parsers;
 
@@ -14,8 +16,7 @@ class TableParser
     /**
      * Parses the whole table and return reformatted new one.
      *
-     * @param  Generator $fileReader File streamer
-     * @return TableDTO
+     * @param Generator $fileReader File streamer
      */
     public function run(Generator $fileReader): TableDTO
     {
@@ -35,8 +36,7 @@ class TableParser
     /**
      * Read table line from file and parse it into cells array.
      *
-     * @param  string           $table_row Line of the table.
-     * @return TableRowDto|null
+     * @param string $table_row line of the table
      */
     private function parseRow(string $table_row): ?TableRowDto
     {
@@ -61,8 +61,9 @@ class TableParser
     /**
      * Find the longest value in the column, and keep the record.
      *
-     * @param  TableRowDto[] $table_cells 2D Array of table cells
-     * @return int[]         List of the width of the columns
+     * @param TableRowDto[] $table_cells 2D Array of table cells
+     *
+     * @return int[] List of the width of the columns
      */
     private function computeColumnWidths(array $table_cells): array
     {

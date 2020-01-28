@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Dto;
 
@@ -7,11 +9,11 @@ namespace Medology\GherkinCsFixer\Dto;
  */
 class PyStringsDto
 {
-    /** @var string[] List of text rows. */
-    private $rows;
-
     /** @var string Text block starting and ending */
     public const KEYWORD = '"""';
+
+    /** @var string[] List of text rows. */
+    private $rows;
 
     /** @var int Initial padding of the starting tag from left */
     private $padding = 0;
@@ -40,8 +42,6 @@ class PyStringsDto
 
     /**
      * left starting tag padding value.
-     *
-     * @return int
      */
     public function getHeaderPadding(): int
     {

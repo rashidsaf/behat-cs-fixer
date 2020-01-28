@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Fixers;
 
@@ -8,5 +10,6 @@ namespace Medology\GherkinCsFixer\Fixers;
 class CommentStepFixer extends StepFixer
 {
     protected $padding = 8;
+
     protected $keyword = '#';
 }

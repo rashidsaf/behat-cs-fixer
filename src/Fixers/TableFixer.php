@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Fixers;
 
@@ -10,17 +12,16 @@ use Medology\GherkinCsFixer\Dto\TableRowDto;
  */
 class TableFixer
 {
-    /** @var TableDto File reader generator */
-    private $dto;
-
     /** @var int Padding value from left */
     private const PADDING = 8;
+
+    /** @var TableDto File reader generator */
+    private $dto;
 
     /**
      * Reformat the table.
      *
-     * @param  TableDto $dto Table content dto.
-     * @return string
+     * @param TableDto $dto table content dto
      */
     public function run(TableDto $dto): string
     {
@@ -36,7 +37,8 @@ class TableFixer
     /**
      * Set padding to make every column same width.
      *
-     * @param  TableRowDto $rowDto List row cells.
+     * @param TableRowDto $rowDto list row cells
+     *
      * @return string[]
      */
     private function setCellPadding(TableRowDto $rowDto): array
@@ -49,19 +51,18 @@ class TableFixer
     /**
      * Makes formatted string out of table row cells.
      *
-     * @param  TableRowDto $rowDto List row cells.
-     * @return string
+     * @param TableRowDto $rowDto list row cells
      */
     private function formatRow(TableRowDto $rowDto): string
     {
         $left_padding = str_repeat(' ', self::PADDING);
 
         if ($rowDto->getType() == 'comment') {
-            return $left_padding.'#'.$rowDto->getRaw().PHP_EOL;
+            return $left_padding . '#' . $rowDto->getRaw() . PHP_EOL;
         }
         $row_cells = $this->setCellPadding($rowDto);
-        $content = '| '.implode(' | ', $row_cells) . ' |' . PHP_EOL;
+        $content = '| ' . implode(' | ', $row_cells) . ' |' . PHP_EOL;
 
-        return $left_padding.$content;
+        return $left_padding . $content;
     }
 }

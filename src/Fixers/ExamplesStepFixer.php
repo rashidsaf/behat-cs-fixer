@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Fixers;
 
@@ -8,6 +10,7 @@ namespace Medology\GherkinCsFixer\Fixers;
 class ExamplesStepFixer extends StepFixer
 {
     protected $padding = 4;
+
     protected $keyword = 'Examples';
 
     /**
@@ -15,6 +18,6 @@ class ExamplesStepFixer extends StepFixer
      */
     public function run(): string
     {
-        return PHP_EOL.parent::run();
+        return PHP_EOL . parent::run();
     }
 }

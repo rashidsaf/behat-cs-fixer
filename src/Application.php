@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer;
 
@@ -44,7 +46,8 @@ class Application
     /**
      * Application constructor.
      *
-     * @param  string[]                $files List of the files to be fixed.
+     * @param string[] $files list of the files to be fixed
+     *
      * @throws InvalidKeywordException When StepDto keyword mismatch
      */
     public function __construct(array $files)
@@ -75,7 +78,8 @@ class Application
     /**
      * Fixes the formatting of the file.
      *
-     * @param  string                  $file_path Path to the test file.
+     * @param string $file_path path to the test file
+     *
      * @throws InvalidKeywordException From StepParser
      * @throws FileNotFound            From FileHelper
      * @throws FileWriteException      From FileHelper
@@ -94,9 +98,9 @@ class Application
     /**
      * Parses the line or table, fix the formatting and return.
      *
-     * @param  Generator               $fileReader File streamer
+     * @param Generator $fileReader File streamer
+     *
      * @throws InvalidKeywordException From StepParser
-     * @return string
      */
     private function fixStep(Generator $fileReader): string
     {

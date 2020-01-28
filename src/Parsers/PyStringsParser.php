@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Parsers;
 
@@ -13,8 +15,7 @@ class PyStringsParser
     /**
      * Parses the text block and return reformatted new one.
      *
-     * @param  Generator    $fileReader File streamer
-     * @return PyStringsDto
+     * @param Generator $fileReader File streamer
      */
     public function run(Generator $fileReader): PyStringsDto
     {

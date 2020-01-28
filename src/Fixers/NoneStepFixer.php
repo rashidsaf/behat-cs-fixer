@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Fixers;
 
@@ -8,6 +10,7 @@ namespace Medology\GherkinCsFixer\Fixers;
 class NoneStepFixer extends StepFixer
 {
     protected $padding = 0;
+
     protected $keyword = '';
 
     /**

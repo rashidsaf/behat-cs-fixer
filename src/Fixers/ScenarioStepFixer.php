@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Fixers;
 
@@ -8,6 +10,8 @@ namespace Medology\GherkinCsFixer\Fixers;
 class ScenarioStepFixer extends StepFixer
 {
     protected $padding = 2;
+
     protected $keyword = 'Scenario';
+
     protected $newline = true;
 }

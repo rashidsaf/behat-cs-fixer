@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Parsers;
 
@@ -27,14 +29,14 @@ class StepParser
     /**
      * Parses the line from the file and return as StepDTO.
      *
-     * @param  string                  $raw_step     Raw text line from the file
-     * @param  StepDto                 $previousStep Previous step information
-     * @throws InvalidKeywordException When the keyword mismatched with check.
-     * @return StepDto
+     * @param string  $raw_step     Raw text line from the file
+     * @param StepDto $previousStep Previous step information
+     *
+     * @throws InvalidKeywordException when the keyword mismatched with check
      */
     public function run(string $raw_step, StepDto $previousStep): StepDto
     {
-        $dto_data = preg_match($this->regex, $raw_step, $m) ? $m : ['body'=>$raw_step];
+        $dto_data = preg_match($this->regex, $raw_step, $m) ? $m : ['body' => $raw_step];
         $dto_data['line_break'] = $previousStep->getKeyword() != 'Tag';
 
         return new StepDto($dto_data);

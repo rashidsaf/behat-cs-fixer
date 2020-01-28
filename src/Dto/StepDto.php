@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Dto;
 
@@ -24,10 +26,10 @@ class StepDto
 
     /** @var array List of special characters that are not actually step keywords. */
     public const SYMBOL_KEYWORDS = [
-        '@'                    => 'Tag',    // Scenario tags
-        '#'                    => 'Comment', // Comment lines
-        '|'                    => 'Table',   // Table pipe
-        PyStringsDto::KEYWORD  => PyStringsDto::KEYWORD, // PyStrings
+        '@'                   => 'Tag',    // Scenario tags
+        '#'                   => 'Comment', // Comment lines
+        '|'                   => 'Table',   // Table pipe
+        PyStringsDto::KEYWORD => PyStringsDto::KEYWORD, // PyStrings
     ];
 
     /** @var string Step line without keyword prefix. */
@@ -42,7 +44,8 @@ class StepDto
     /**
      * Fill the properties from array.
      *
-     * @param  array                   $content Step line parts
+     * @param array $content Step line parts
+     *
      * @throws InvalidKeywordException When the keyword mismatched with check
      */
     public function __construct(array $content = [])
@@ -54,7 +57,7 @@ class StepDto
         } elseif (in_array($content['keyword'], self::STEP_KEYWORDS)) {
             $this->keyword = $content['keyword'];
         } else {
-            throw new InvalidKeywordException('Mismatched parsed keyword: '.$content['keyword']);
+            throw new InvalidKeywordException('Mismatched parsed keyword: ' . $content['keyword']);
         }
 
         $this->body = $content['body'] ?? '';
@@ -63,8 +66,6 @@ class StepDto
 
     /**
      * Returns the step keyword.
-     *
-     * @return string
      */
     public function getKeyword(): string
     {
@@ -73,8 +74,6 @@ class StepDto
 
     /**
      * Returns the step body.
-     *
-     * @return string
      */
     public function getBody(): string
     {
@@ -83,8 +82,6 @@ class StepDto
 
     /**
      * Insert new line before ?
-     *
-     * @return bool
      */
     public function hasLineBreak(): bool
     {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Medology\GherkinCsFixer\Fixers;
 
@@ -15,8 +17,7 @@ class PyStringsFixer
     /**
      * Reformat the text.
      *
-     * @param  PyStringsDto $dto Text content dto.
-     * @return string
+     * @param PyStringsDto $dto text content dto
      */
     public function run(PyStringsDto $dto): string
     {
@@ -35,9 +36,10 @@ class PyStringsFixer
     /**
      * Get the text with the expected padding.
      *
-     * @param  string $text         The text string
-     * @param  int    $startPadding The original start padding
-     * @param  int    $textPadding  The original text padding
+     * @param string $text         The text string
+     * @param int    $startPadding The original start padding
+     * @param int    $textPadding  The original text padding
+     *
      * @return string
      */
     private function getPaddedText(string $text, int $startPadding, int $textPadding): string
@@ -48,8 +50,9 @@ class PyStringsFixer
     /**
      * Get the number of padding spaces.
      *
-     * @param  int $startPadding The original start padding
-     * @param  int $textPadding  The original text padding
+     * @param int $startPadding The original start padding
+     * @param int $textPadding  The original text padding
+     *
      * @return int
      */
     private function getLeftPadding(int $startPadding, int $textPadding): int
