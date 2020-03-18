@@ -72,8 +72,8 @@ class TableParser
             foreach ($rowDto->getCells() as $col => $cell) {
                 $columns_width[$col] =
                     isset($columns_width[$col])
-                    ? max(strlen($cell), $columns_width[$col])
-                    : strlen($cell);
+                    ? max(mb_strlen($cell), $columns_width[$col])
+                    : mb_strlen($cell);
             }
         }
 
