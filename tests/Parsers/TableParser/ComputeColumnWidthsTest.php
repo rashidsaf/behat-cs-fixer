@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Parsers\TableParser;
@@ -9,7 +10,7 @@ use ReflectionException;
 use Tests\TestCase;
 
 /**
- * @covers Medology\GherkinCsFixer\Parsers\TableParser::computeColumnWidths
+ * @covers \Medology\GherkinCsFixer\Parsers\TableParser::computeColumnWidths
  */
 class ComputeColumnWidthsTest extends TestCase
 {
