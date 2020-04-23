@@ -44,7 +44,7 @@ class TableFixer
     private function setCellPadding(TableRowDto $rowDto): array
     {
         return array_map(function ($column, $cell) {
-            return str_pad($cell, $this->dto->getColumnLength($column), ' ', STR_PAD_RIGHT);
+            return $cell . str_repeat(' ', $this->dto->getColumnLength($column) - mb_strlen($cell));
         }, array_keys($rowDto->getCells()), $rowDto->getCells());
     }
 
