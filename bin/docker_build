@@ -6,6 +6,9 @@ ROOT="$( cd "$( dirname "$BASH_SOURCE[0]" )/../" && pwd )"
 
 . "${ROOT}"/docker/lib/images.sh
 
+# Installing submodules.
+git submodule update --init
+
 # Download composer
 if [[ ! -f "$ROOT"/bin/composer ]]; then
   . "$ROOT"/bin/init/install_composer.sh
