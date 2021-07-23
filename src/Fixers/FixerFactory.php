@@ -16,12 +16,13 @@ class FixerFactory
     /**
      * Gets related Fixer class.
      *
-     * @param StepDto $stepDTO Data transfer Object of the step
+     * @param StepDto $stepDTO         Data transfer Object of the step
+     * @param StepDto $previousStepDto Data transfer Object of the previous step
      */
-    public static function getStepFixer(StepDto $stepDTO): StepFixer
+    public static function getStepFixer(StepDto $stepDTO, ?StepDto $previousStepDto): StepFixer
     {
         $fixerClass = '\Medology\GherkinCsFixer\Fixers\\' . $stepDTO->getKeyword() . 'StepFixer';
 
-        return new $fixerClass($stepDTO);
+        return new $fixerClass($stepDTO, $previousStepDto);
     }
 }

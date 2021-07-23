@@ -2,6 +2,6 @@
 
 set -eu
 
-export DEV_PHP_IMAGE=chekote/php:7.3.11-phpunit7
+export DEV_PHP_IMAGE=chekote/php:7.3.29-phpunit7
 
-export PHP_IMAGE=chekote/php:7.3.11
+export PHP_IMAGE=chekote/php:7.3.29

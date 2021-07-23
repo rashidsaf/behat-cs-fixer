@@ -14,4 +14,17 @@ class TagStepFixer extends StepFixer
     protected $keyword = '@';
 
     protected $newline = true;
+
+    /**
+     * Fix the step and return reformatted string.
+     */
+    public function run(): string {
+
+        if(!$this->previousStepDto) {
+            $this->padding = 0;
+            $this->newline = false;
+        }
+
+        return parent::run();
+    }
 }

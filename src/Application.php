@@ -58,7 +58,7 @@ class Application
         $this->tableFixer = new TableFixer();
         $this->pyStringsFixer = new PyStringsFixer();
         $this->pyStringsParser = new PyStringsParser();
-        $this->previousStepDto = new StepDto();
+        $this->previousStepDto = null;
     }
 
     /**
@@ -113,8 +113,11 @@ class Application
         }
 
         $fileReader->next();
-        $this->previousStepDto = $stepDto->getKeyword() != 'None' ? $stepDto : $this->previousStepDto;
 
-        return FixerFactory::getStepFixer($stepDto)->run();
+        try {
+            return FixerFactory::getStepFixer($stepDto, $this->previousStepDto)->run();
+        } finally {
+            $this->previousStepDto = ($stepDto && $stepDto->getKeyword() != 'None') ? $stepDto : $this->previousStepDto;
+        }
     }
 }

@@ -20,15 +20,20 @@ abstract class StepFixer
     /** @var bool Has new line before this step. */
     protected $newline = false;
 
+    /** @var StepDto The last step */
+    protected $previousStepDto;
+
     /**
      * Assign the body variable.
      *
-     * @param StepDto $stepDto All the information about this step
+     * @param StepDto|null $stepDto         All the information about this step
+     * @param StepDto|null $previousStepDto All the information about the previous step
      */
-    public function __construct(StepDto $stepDto)
+    public function __construct(?StepDto $stepDto, ?StepDto $previousStepDto)
     {
         $this->step_body = $stepDto->getBody();
         $this->newline = $stepDto->hasLineBreak() && $this->newline;
+        $this->previousStepDto = $previousStepDto;
     }
 
     /**
