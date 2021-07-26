@@ -23,7 +23,7 @@ use Medology\GherkinCsFixer\Parsers\TableParser;
 class Application
 {
     /** @var string[] List of the files. */
-    private $files = [];
+    protected $files = [];
 
     /** @var StepParser Instance of StepParser */
     private $stepParser;
@@ -41,7 +41,7 @@ class Application
     private $pyStringsFixer;
 
     /** @var StepDto Storing previous step information */
-    private $previousStepDto;
+    protected $previousStepDto;
 
     /**
      * Application constructor.
@@ -71,6 +71,7 @@ class Application
     public function run(): void
     {
         foreach ($this->files as $file) {
+            $this->previousStepDto = null;
             $this->fix($file);
         }
     }
@@ -84,7 +85,7 @@ class Application
      * @throws FileNotFound            From FileHelper
      * @throws FileWriteException      From FileHelper
      */
-    private function fix(string $file_path): void
+    protected function fix(string $file_path): void
     {
         $content = '';
         $fileReader = FileHelper::readFile($file_path);
