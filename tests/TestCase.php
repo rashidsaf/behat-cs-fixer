@@ -14,6 +14,41 @@ use TypeError;
 abstract class TestCase extends BaseTestCase
 {
     /**
+     * Sets value for protected/private property of a class.
+     *
+     * @param object|string $object       Class name, or instantiated object that we will set attribute on
+     * @param string        $propertyName Property name to set
+     * @param mixed         $value        Property value to set
+     *
+     * @throws ReflectionException when the class property does not exist
+     */
+    public function setProperty($object, string $propertyName, $value): void
+    {
+        $property = $this->makePropertyAccessible($object, $propertyName);
+        $property->setValue($object, $value);
+        $property->setAccessible(false);
+    }
+
+    /**
+     * Gets the value for protected/private property of a class.
+     *
+     * @param object      $object        instantiated object that we will get property from
+     * @param string      $propertyName  Property name to set
+     * @param string|null $propertyClass Optional class that the property is defined on. Required when the property
+     *                                   is defined as private on a parent of $object. If this is not provided,
+     *                                   the property is assumed to be visible to $object's class.
+     *
+     * @throws ReflectionException when the class property does not exist
+     * @throws TypeError           when the property is non-static, and you provide a class name instead an object
+     *
+     * @return mixed
+     */
+    public function getProperty(object $object, string $propertyName, ?string $propertyClass = null)
+    {
+        return $this->makePropertyAccessible($propertyClass ?? $object, $propertyName)->getValue($object);
+    }
+
+    /**
      * Call protected/private method of a class.
      *
      * @param object|string &$object    Instantiated object that we will run method on
@@ -56,40 +91,5 @@ abstract class TestCase extends BaseTestCase
         $property->setAccessible(true);
 
         return $property;
-    }
-
-    /**
-     * Sets value for protected/private property of a class.
-     *
-     * @param object|string $object       Class name, or instantiated object that we will set attribute on
-     * @param string        $propertyName Property name to set
-     * @param mixed         $value        Property value to set
-     *
-     * @throws ReflectionException when the class property does not exist
-     */
-    public function setProperty($object, string $propertyName, $value): void
-    {
-        $property = $this->makePropertyAccessible($object, $propertyName);
-        $property->setValue($object, $value);
-        $property->setAccessible(false);
-    }
-
-    /**
-     * Gets the value for protected/private property of a class.
-     *
-     * @param object      $object        instantiated object that we will get property from
-     * @param string      $propertyName  Property name to set
-     * @param string|null $propertyClass Optional class that the property is defined on. Required when the property
-     *                                   is defined as private on a parent of $object. If this is not provided,
-     *                                   the property is assumed to be visible to $object's class.
-     *
-     * @throws ReflectionException when the class property does not exist
-     * @throws TypeError           when the property is non-static, and you provide a class name instead an object
-     *
-     * @return mixed
-     */
-    public function getProperty(object $object, string $propertyName, ?string $propertyClass = null)
-    {
-        return $this->makePropertyAccessible($propertyClass ?? $object, $propertyName)->getValue($object);
     }
 }

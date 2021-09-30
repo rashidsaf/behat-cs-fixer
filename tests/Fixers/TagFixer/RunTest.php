@@ -16,9 +16,9 @@ class RunTest extends TestCase
         $previousStepDto = null;
         // And the current step is for a tag step.
         $currentStepDto = new StepDto([
-            'keyword' => '@',
-            'body' => 'test',
-            'line_break' => false
+            'keyword'    => '@',
+            'body'       => 'test',
+            'line_break' => false,
         ]);
         // When the current step is fixed
         $actual = (new TagStepFixer($currentStepDto, $previousStepDto))->run();
@@ -34,15 +34,15 @@ gherkin;
     {
         // Given the previous step is present (the current step is not the first step)
         $previousStepDto = new StepDto([
-            'keyword' => 'Then',
-            'body' => 'I assert something',
-            'line_break' => true
+            'keyword'    => 'Then',
+            'body'       => 'I assert something',
+            'line_break' => true,
         ]);
         // And the current step is for a tag step.
         $currentStepDto = new StepDto([
-            'keyword' => '@',
-            'body' => 'test',
-            'line_break' => false
+            'keyword'    => '@',
+            'body'       => 'test',
+            'line_break' => false,
         ]);
         // When the current step is fixed
         $actual = (new TagStepFixer($currentStepDto, $previousStepDto))->run();

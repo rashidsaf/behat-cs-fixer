@@ -26,8 +26,10 @@ class SetCellPadding extends TestCase
      *
      * @dataProvider tableRowsProvider
      */
-    public function testSetCellPaddingParsedCorrectlyForCellWithMultiBytes(array $tableDtoContents, array $formattedCells)
-    {
+    public function testSetCellPaddingParsedCorrectlyForCellWithMultiBytes(
+        array $tableDtoContents,
+        array $formattedCells
+    ) {
         $tableRowDtos = array_map(function ($tableDtoContent) {
             return new TableRowDto([$tableDtoContent]);
         }, $tableDtoContents);
@@ -49,8 +51,6 @@ class SetCellPadding extends TestCase
 
     /**
      * Provide all test cases for the table rows with/without multibyte string.
-     *
-     * @return array
      */
     public function tableRowsProvider(): array
     {

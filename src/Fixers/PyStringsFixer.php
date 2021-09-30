@@ -30,7 +30,7 @@ class PyStringsFixer
         }
         $block_tag = $this->getBlockTag();
 
-        return  $block_tag . $text . $block_tag;
+        return $block_tag . $text . $block_tag;
     }
 
     /**
@@ -39,8 +39,6 @@ class PyStringsFixer
      * @param string $text         The text string
      * @param int    $startPadding The original start padding
      * @param int    $textPadding  The original text padding
-     *
-     * @return string
      */
     private function getPaddedText(string $text, int $startPadding, int $textPadding): string
     {
@@ -52,8 +50,6 @@ class PyStringsFixer
      *
      * @param int $startPadding The original start padding
      * @param int $textPadding  The original text padding
-     *
-     * @return int
      */
     private function getLeftPadding(int $startPadding, int $textPadding): int
     {
@@ -62,8 +58,6 @@ class PyStringsFixer
 
     /**
      * Get the block tag with the padding.
-     *
-     * @return string
      */
     private function getBlockTag(): string
     {

@@ -44,6 +44,7 @@ class TableParser
         if (preg_match('/^(\s+)?#(?P<comment>.*)/', $table_row, $matches)) {
             return new TableRowDto([], 'comment', $matches['comment']);
         }
+
         // Non-table content
         if (!preg_match('/^(\s+)?\|(?P<step>.*)/', $table_row)) {
             return null;

@@ -29,7 +29,7 @@ class StepParser
     /**
      * Parses the line from the file and return as StepDTO.
      *
-     * @param string  $raw_step     Raw text line from the file
+     * @param string       $raw_step     Raw text line from the file
      * @param StepDto|null $previousStep Previous step information
      *
      * @throws InvalidKeywordException when the keyword mismatched with check

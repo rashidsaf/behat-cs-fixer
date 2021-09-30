@@ -25,7 +25,10 @@ class Application
     /** @var string[] List of the files. */
     protected $files = [];
 
-    /** @var StepParser Instance of StepParser */
+    /** @var StepDto Storing previous step information */
+    protected $previousStepDto;
+
+    /** @var StepParser Instance of StepParser. */
     private $stepParser;
 
     /** @var TableParser Instance of TableParser */
@@ -39,9 +42,6 @@ class Application
 
     /** @var PyStringsFixer Instance of MultilineFixer */
     private $pyStringsFixer;
-
-    /** @var StepDto Storing previous step information */
-    protected $previousStepDto;
 
     /**
      * Application constructor.
@@ -109,6 +109,7 @@ class Application
         if ($stepDto->getKeyword() == 'Table') {
             return $this->tableFixer->run($this->tableParser->run($fileReader));
         }
+
         if ($stepDto->getKeyword() == PyStringsDto::KEYWORD) {
             return $this->pyStringsFixer->run($this->pyStringsParser->run($fileReader));
         }

@@ -18,9 +18,9 @@ class TagStepFixer extends StepFixer
     /**
      * Fix the step and return reformatted string.
      */
-    public function run(): string {
-
-        if(!$this->previousStepDto) {
+    public function run(): string
+    {
+        if (!$this->previousStepDto) {
             $this->padding = 0;
             $this->newline = false;
         }
