@@ -1,3 +1,4 @@
+# medology/gherkin-cs-fixer::$(date '+%Y-%m-%d')
 ARG PHP_IMAGE
 FROM ${PHP_IMAGE}
 

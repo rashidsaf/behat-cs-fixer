@@ -2,23 +2,19 @@
 
 set -eu
 
-ROOT="$( cd "$( dirname "$BASH_SOURCE[0]" )/../" && pwd )"
-
-. "${ROOT}"/docker/lib/images.sh
+ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
 
 # Installing submodules.
 git submodule update --init
 
 # Download composer
 if [[ ! -f "$ROOT"/bin/composer ]]; then
-  . "$ROOT"/bin/init/install_composer.sh
+  . "$ROOT"/submodules/bin/init/install_composer.sh
 fi
 
 if [[ "${1:-''}" != 'production' ]]; then
     composer install
     # Build Gherkin CS Fixer image for testing
-    docker build ${ROOT} \
-      -f docker/Dockerfile \
-      -t local:gherkin_fixer \
-      --build-arg PHP_IMAGE
+    docker build "$ROOT" -f docker/Dockerfile -t "medology/gherkin-cs-fixer:$(date '+%Y-%m-%d')" \
+        --build-arg PHP_IMAGE=chekote/php:7.3.31
 fi

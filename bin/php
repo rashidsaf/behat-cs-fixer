@@ -2,21 +2,16 @@
 
 set -eu
 
-ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"
+. get_tty
+. submodules/lib/docker_host_user_id.sh
 
-. "${ROOT}"/bin/lib/tty.sh
-. "${ROOT}"/docker/lib/images.sh
-
-if [[ `uname` == 'Linux' ]]; then
-   USER_ARG="-e LOCAL_USER_ID=`id -u`"
-else
-   USER_ARG=''
-fi
-
+# We actually need word-splitting for the TTY flag to work
+# shellcheck disable=SC2086
 docker run \
-    -i${TTY} \
+    -e "LOCAL_USER_ID=$DOCKER_HOST_USER_ID" \
+    -i \
+    $TTY \
     --rm \
-    ${USER_ARG} \
     -v "$(pwd)":/workdir \
     -v ~/.composer:/home/user/.composer \
-	${DEV_PHP_IMAGE} php "$@"
+	  chekote/php:7.3.29-phpunit7 php "$@"
