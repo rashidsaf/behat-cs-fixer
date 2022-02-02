@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Get the root of the project, which is NOT relative to this file, but instead,
+# relative to the .git/hooks/pre-commit symlink used to execute this script.
+root="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../.." && pwd )"
+
+. "$root/submodules/lib/git.bash"
+
+# Additional hooks go here...
+"$root/submodules/bin/pre-commit"
+
+if [ -d "$root/.git/hooks/pre-commit.d" ]; then
+  source "$root/.git/hooks/pre-commit.d/*"
+fi

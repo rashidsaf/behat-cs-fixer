@@ -12,6 +12,6 @@ docker run \
     -i \
     $TTY \
     --rm \
-    -v "$(pwd)":/workdir \
-    -v ~/.composer:/home/user/.composer \
-	  chekote/php:7.3.29-phpunit7 php "$@"
+    --mount source=gherkin_cs_fixer_project,target=/workdir \
+    --mount source=user_composer,target=/home/user/.composer \
+	chekote/php:7.3.33-phpunit7 php "$@"

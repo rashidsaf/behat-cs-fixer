@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Initialize submodules
+git submodule update --init
+
+# Install Git Hooks
+submodules/bin/init/init_git_hooks.sh
+
+echo "Setting up Docker volumes..."
+setup_volumes.sh
+
+echo "Installing Composer..."
+submodules/bin/init/install_composer.sh
+
+echo "Validating Composer..."
+composer validate
+
+echo "Installing dependencies..."
+composer install --no-interaction
