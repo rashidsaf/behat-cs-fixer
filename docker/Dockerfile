@@ -10,16 +10,17 @@ RUN set -eu; \
     #
     #
     apt-get update; \
-    apt-get install -y --no-install-recommends --no-install-suggests \
     #
-    # Multibyte string extension
-    php${PHP_VERSION}-mbstring; \
+    # Gherkin CS Fixer requirements
+    apt-get install -y --no-install-recommends --no-install-suggests php${PHP_VERSION}-mbstring; \
     #
     # Cleanup
     apt-get remove -y; \
     apt-get autoremove -y; \
     apt-get clean; \
     rm -rf /var/lib/apt/lists/*; \
+    #
+    # Remove unneeded Docker files
     rm -rf /project/docker;
 
 ENTRYPOINT ["/usr/local/bin/entrypoint-gherkin-fixer.sh"]
