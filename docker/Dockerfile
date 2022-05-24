@@ -10,7 +10,7 @@ RUN set -eu; \
     #
     # Upgrade all packages
     apt-get update; \
-    apt-get upgrade; \
+    apt-get upgrade -y; \
     #
     # Gherkin CS Fixer requirements
     apt-get install -y --no-install-recommends --no-install-suggests php${PHP_VERSION}-mbstring; \
