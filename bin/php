@@ -2,15 +2,15 @@
 
 set -eu
 
-. get_tty
 . submodules/lib/docker_host_user_id.sh
+. submodules/lib/docker.bash
 
 # We actually need word-splitting for the TTY flag to work
-# shellcheck disable=SC2086
+# shellcheck disable=SC2046
 docker run \
     -e "LOCAL_USER_ID=$DOCKER_HOST_USER_ID" \
     -i \
-    $TTY \
+    $(docker.tty) \
     --rm \
     --mount source=gherkin_cs_fixer_project,target=/workdir \
     --mount source=user_composer,target=/home/user/.composer \
