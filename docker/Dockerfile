@@ -8,8 +8,9 @@ COPY ./docker/gherkin-cs-fixer /usr/local/bin/gherkin-cs-fixer
 
 RUN set -eu; \
     #
-    #
+    # Upgrade all packages
     apt-get update; \
+    apt-get upgrade; \
     #
     # Gherkin CS Fixer requirements
     apt-get install -y --no-install-recommends --no-install-suggests php${PHP_VERSION}-mbstring; \
