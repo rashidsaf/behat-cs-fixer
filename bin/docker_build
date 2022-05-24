@@ -5,6 +5,6 @@ set -eu
 if [[ "${1:-''}" != 'production' ]]; then
     composer install
     # Build Gherkin CS Fixer image for testing
-    docker build . -f docker/Dockerfile -t "medology/gherkin-cs-fixer:$(date '+%Y-%m-%d')" \
+    docker buildx build --push . -f docker/Dockerfile -t "medology/gherkin-cs-fixer:$(date '+%Y-%m-%d')" \
         --build-arg PHP_IMAGE=chekote/php:7.3.33
 fi
