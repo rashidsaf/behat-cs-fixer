@@ -2,13 +2,12 @@
 
 set -eu
 
-. submodules/lib/docker_host_user_id.sh
 . submodules/lib/docker.bash
 
 # We actually need word-splitting for the TTY flag to work
 # shellcheck disable=SC2046
 docker run \
-    -e "LOCAL_USER_ID=$DOCKER_HOST_USER_ID" \
+    -e "LOCAL_USER_ID=$(docker.host.user.id)" \
     -i \
     $(docker.tty) \
     --rm \
